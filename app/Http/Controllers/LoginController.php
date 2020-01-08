@@ -37,7 +37,9 @@ class LoginController extends Controller
             return redirect()->intended('/admin/dashboard');
         }
 
-        return Redirect::to('/login');
+        return Redirect::to('/login')
+            ->with('failed','Email or password is wrong.')
+            ->withInput();
 
     }
 }

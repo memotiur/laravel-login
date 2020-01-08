@@ -23,8 +23,8 @@ Route::post('/login/check', 'LoginController@loginCheck');
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/dashboard', 'DashboardController@dashboard');
 
-
 });
+
 Route::group(['middleware' => 'admin'], function () {
 
     Route::get('/logout', 'DashboardController@logout');
