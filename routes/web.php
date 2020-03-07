@@ -11,17 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('common.home.index');
-});
+Route::get('/', 'LoginController@login');
 
 
 Route::get('/login', 'LoginController@login');
-Route::post('/login/check', 'LoginController@loginCheck');
+Route::post('/login/check', 'LoginController@loginCheck')->name('loginCheck');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/dashboard', 'DashboardController@dashboard');
+
 
 });
 
@@ -30,5 +29,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/logout', 'DashboardController@logout');
 
 });
+Route::get('/dashboard/profile', 'DashboardController@admin_profile');
+Route::post('/dashboard/profileUpdate', 'DashboardController@profileUpdate');
 
 
