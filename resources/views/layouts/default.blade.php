@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="/">Dashboard</a>
+                <a class="nav-link" href="/">Home</a>
             </li>
         </ul>
 
@@ -38,8 +38,5 @@
 </div>
 
 @include('includes.admin.footer')
-<script src="assets/js/jquery-3.1.1.min.js"></script>
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/js/bootstrap.js"></script>
 </body>
 </html>

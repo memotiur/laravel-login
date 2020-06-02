@@ -11,15 +11,22 @@
 |
 */
 
-Route::get('/', 'LoginController@login');
+Route::get('/', function () {
+    return view('common.home.index');
+});
 
 
-Route::get('/login', 'LoginController@login');
-Route::post('/login/check', 'LoginController@loginCheck')->name('loginCheck');
+Route::get('/login', 'AuthController@login');
+Route::post('/login/check', 'AuthController@loginCheck');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/dashboard', 'DashboardController@dashboard');
+
+
+
+    Route::get('/dashboard', 'DashboardController@dashboard');
+
 
 
 });
@@ -29,7 +36,19 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/logout', 'DashboardController@logout');
 
 });
-Route::get('/dashboard/profile', 'DashboardController@admin_profile');
-Route::post('/dashboard/profileUpdate', 'DashboardController@profileUpdate');
+
+
+Route::get('/test', function () {
+    return view('test');
+});
+
+
+Route::get('/down', function () {
+    $exitCode = Artisan::call('down');
+});
+
+Route::get('/up', function () {
+    $exitCode = Artisan::call('up');
+});
 
 

@@ -119,7 +119,7 @@ class Blueprint
         foreach ($this->commands as $command) {
             $method = 'compile'.ucfirst($command->name);
 
-            if (method_exists($grammar, $method) || $grammar::hasMacro($method)) {
+            if (method_exists($grammar, $method)) {
                 if (! is_null($sql = $grammar->$method($this, $command, $connection))) {
                     $statements = array_merge($statements, (array) $sql);
                 }
@@ -791,9 +791,7 @@ class Blueprint
      */
     public function float($column, $total = 8, $places = 2)
     {
-        return $this->addColumn('float', $column, [
-            'total' => $total, 'places' => $places, 'unsigned' => false,
-        ]);
+        return $this->addColumn('float', $column, compact('total', 'places'));
     }
 
     /**
@@ -806,9 +804,7 @@ class Blueprint
      */
     public function double($column, $total = null, $places = null)
     {
-        return $this->addColumn('double', $column, [
-            'total' => $total, 'places' => $places, 'unsigned' => false,
-        ]);
+        return $this->addColumn('double', $column, compact('total', 'places'));
     }
 
     /**
@@ -821,9 +817,7 @@ class Blueprint
      */
     public function decimal($column, $total = 8, $places = 2)
     {
-        return $this->addColumn('decimal', $column, [
-            'total' => $total, 'places' => $places, 'unsigned' => false,
-        ]);
+        return $this->addColumn('decimal', $column, compact('total', 'places'));
     }
 
     /**

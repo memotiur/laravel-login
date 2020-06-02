@@ -1169,25 +1169,6 @@ class TestResponse implements ArrayAccess
     }
 
     /**
-     * Dump the session from the response.
-     *
-     * @param  string|array  $keys
-     * @return $this
-     */
-    public function dumpSession($keys = [])
-    {
-        $keys = (array) $keys;
-
-        if (empty($keys)) {
-            dump($this->session()->all());
-        } else {
-            dump($this->session()->only($keys));
-        }
-
-        return $this;
-    }
-
-    /**
      * Get the streamed content from the response.
      *
      * @return string
@@ -1259,8 +1240,6 @@ class TestResponse implements ArrayAccess
      * @param  string  $offset
      * @param  mixed  $value
      * @return void
-     *
-     * @throws \LogicException
      */
     public function offsetSet($offset, $value)
     {
@@ -1272,8 +1251,6 @@ class TestResponse implements ArrayAccess
      *
      * @param  string  $offset
      * @return void
-     *
-     * @throws \LogicException
      */
     public function offsetUnset($offset)
     {
